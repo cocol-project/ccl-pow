@@ -21,12 +21,12 @@ require "btcpow"
 ```
 
 #### Mining
-```
+```crystal
 BTCPoW.mine(difficulty: "1d00ffff", for: "my_block_data")
 ```
 
 #### Calculate target based on difficulty bits
-```
+```crystal
 BTCPoW::Utils.calculate_target(from: "1d00ffff")
 ```
 
