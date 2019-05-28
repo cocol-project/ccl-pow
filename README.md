@@ -1,5 +1,4 @@
 # BTCPoW
----
 [![Build Status](https://travis-ci.org/cocol-project/btcpow.svg?branch=master)](https://travis-ci.org/cocol-project/btcpow)
 ---
 
