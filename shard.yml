@@ -1,0 +1,13 @@
+name: btcpow
+version: 0.1.0-alpha
+
+authors:
+  - Cristian Șerb <cristian@amatus.com>
+
+targets:
+  pow:
+    main: src/btcpow.cr
+
+crystal: 0.28.2
+
+license: MIT

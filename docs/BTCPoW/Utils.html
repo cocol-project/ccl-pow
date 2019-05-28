@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.27.2">
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="../js/doc.js"></script>
+<script type="text/javascript">
+  CrystalDoc.base_path = "../";
+</script>
+
+  <meta id="repository-name" content="">
+  <title>BTCPoW::Utils - </title>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="repository-links">
+      <a href="../index.html">README</a>
+    </div>
+  </div>
+
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="/BTCPoW" data-name="btcpow">
+      <a href="../BTCPoW.html">BTCPoW</a>
+      
+        <ul>
+  
+  <li class=" " data-id="/BTCPoW/BlockHash" data-name="btcpow::blockhash">
+      <a href="../BTCPoW/BlockHash.html">BlockHash</a>
+      
+    </li>
+  
+  <li class=" " data-id="/BTCPoW/InputData" data-name="btcpow::inputdata">
+      <a href="../BTCPoW/InputData.html">InputData</a>
+      
+    </li>
+  
+  <li class=" current" data-id="/BTCPoW/Utils" data-name="btcpow::utils">
+      <a href="../BTCPoW/Utils.html">Utils</a>
+      
+    </li>
+  
+  <li class=" " data-id="/BTCPoW/Work" data-name="btcpow::work">
+      <a href="../BTCPoW/Work.html">Work</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> BTCPoW::Utils
+
+</h1>
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Extended Modules</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type"><a href="../BTCPoW/Utils.html">BTCPoW::Utils</a></li>
+  
+  </ul>
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+
+
+
+
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#calculate_hash%28nonce%3AUInt64%2Cdata%3AString%29%3ABlockHash-instance-method" class="signature"><strong>#calculate_hash</strong>(nonce : UInt64, data : String) : BlockHash</a>
+        
+          <div class="summary"><p>Returns the hash for <code>nonce</code> + <code>data</code></p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#calculate_target%28fromnbits%3AString%29%3ABigInt-instance-method" class="signature"><strong>#calculate_target</strong>(from nbits : String) : BigInt</a>
+        
+          <div class="summary"><p>Returns the numerical target threshold based on the given difficulty</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+</div>
+
+
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="calculate_hash(nonce:UInt64,data:String):BlockHash-instance-method">
+      <div class="signature">
+        
+        def <strong>calculate_hash</strong>(nonce : UInt64, data : String) : <a href="../BTCPoW/BlockHash.html">BlockHash</a>
+
+        <a class="method-permalink" href="#calculate_hash%28nonce%3AUInt64%2Cdata%3AString%29%3ABlockHash-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns the hash for <code>nonce</code> + <code>data</code></p>
+
+<pre><code><span class="t">BTCPoW</span><span class="t">::</span><span class="t">Utils</span>.calculate_hash(nonce: <span class="n">20151213_u64</span>, data: <span class="s">&quot;cocol&quot;</span>) <span class="c"># =&gt; &quot;5906039dfa0262343155216f0d73135d30fd48a0d4543c61d27169db12736d3a&quot;</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="calculate_target(fromnbits:String):BigInt-instance-method">
+      <div class="signature">
+        
+        def <strong>calculate_target</strong>(from nbits : String) : BigInt
+
+        <a class="method-permalink" href="#calculate_target%28fromnbits%3AString%29%3ABigInt-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns the numerical target threshold based on the given difficulty</p>
+
+<p>Find out more about it here
+https://github.com/bitcoinbook/bitcoinbook/blob/develop/ch10.asciidoc#target-representation</p>
+
+<pre><code><span class="t">BTCPoW</span><span class="t">::</span><span class="t">Utils</span>.calculate_target(from: <span class="s">&quot;1d00ffff&quot;</span>) <span class="c"># =&gt; 26959535291011309493156476344723991336010898738574164086137773096960</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>
