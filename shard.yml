@@ -2,7 +2,7 @@ name: btcpow
 version: 0.1.0-alpha
 
 authors:
-  - Cristian Șerb <cristian@amatus.com>
+  - Cristian Șerb <cserb@pm.me>
 
 targets:
   pow:
