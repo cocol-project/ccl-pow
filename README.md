@@ -4,15 +4,17 @@
 
 Bitcoin style Proof of Work lib written in Crystal
 
+Docs: https://cocol-project.github.io/btcpow
+
 ## Installation
 
 1. Add the dependency to your `shard.yml`:
 
-   ```yaml
-   dependencies:
-     btcpow:
-       github: cocol-project/btcpow
-   ```
+```yaml
+dependencies:
+  btcpow:
+    github: cocol-project/btcpow
+```
 
 2. Run `shards install`
 
