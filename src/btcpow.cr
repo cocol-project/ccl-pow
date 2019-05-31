@@ -35,6 +35,10 @@ module BTCPoW
   module Utils
     extend self
 
+    MIN_DIFFICULTY = BigInt.new("1000000000000000000000000000000000000000000000000000000000000000", 16)
+
+    alias NBits = String
+
     # Returns the hash for `nonce` + `data`
     #
     # ```
@@ -59,6 +63,40 @@ module BTCPoW
       coefficient = BigInt.new(nbits[2..7], 16)
 
       coefficient * (BigInt.new(2) ** (BigInt.new(8)*(exponent - BigInt.new(3))))
+    end
+
+
+    # Returns the target as nbits from a given numerical target
+    #
+    # ```
+    # BTCPoW::Utils.calculate_nbits(from: BigInt.new("26959535291011309493156476344723991336010898738574164086137773096960")) # => "1d00ffff"
+    # ```
+    def calculate_nbits(from target : BigInt) : NBits
+      h_target = target.to_s(16)
+      first_digit = h_target[0..1].to_i(16)
+      if first_digit > 127
+        h_target = "00#{h_target}"
+      end
+      first_digit = h_target[0..1].to_i32(10)
+      size = h_target.bytesize/2
+      "#{size.to_s(16)}#{h_target[0..5]}"
+    end
+
+    # Returns the retargeted difficulty based on the timestamp of a given block
+    # and the timespan in minutes.
+    #
+    # Assuming you want retarget for the last minute in which you targeted 12 blocks
+    # you would pass the timestamp of the `current_block - 12` and 1 minute as timespan
+    #
+    # ```
+    # BTCPoW::Utils.retarget(timestamp: 1559306286, timespan: 1_u32) # => "2100c000"
+    # ```
+    def retarget(timestamp : Int64, timespan : UInt32, current_target : BigInt = MIN_DIFFICULTY) : NBits
+      now = Time.utc_now.to_unix
+      passed_time = now - timestamp
+
+      new_num_target = current_target * (BigInt.new(passed_time) / BigInt.new(timespan))
+      calculate_nbits from: new_num_target
     end
   end
 end

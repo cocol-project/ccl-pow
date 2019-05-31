@@ -1,5 +1,5 @@
 name: btcpow
-version: 0.1.0-alpha
+version: 0.1.1-alpha
 
 authors:
   - Cristian Șerb <cserb@pm.me>
@@ -8,6 +8,6 @@ targets:
   pow:
     main: src/btcpow.cr
 
-crystal: 0.28.2
+crystal: 0.28.0
 
 license: MIT
