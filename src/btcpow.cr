@@ -35,7 +35,8 @@ module BTCPoW
   module Utils
     extend self
 
-    MIN_DIFFICULTY = BigInt.new("1000000000000000000000000000000000000000000000000000000000000000", 16)
+    MIN_TARGET = BigInt.new("1000000000000000000000000000000000000000000000000000000000000000", 16)
+    MIN_NBITS  = "20100000"
 
     alias NBits = String
 
@@ -65,7 +66,6 @@ module BTCPoW
       coefficient * (BigInt.new(2) ** (BigInt.new(8)*(exponent - BigInt.new(3))))
     end
 
-
     # Returns the target as nbits from a given numerical target
     #
     # ```
@@ -77,7 +77,6 @@ module BTCPoW
       if first_digit > 127
         h_target = "00#{h_target}"
       end
-      first_digit = h_target[0..1].to_i32(10)
       size = h_target.bytesize/2
       "#{size.to_s(16)}#{h_target[0..5]}"
     end
@@ -86,17 +85,24 @@ module BTCPoW
     # and the timespan in minutes.
     #
     # Assuming you want retarget for the last minute in which you targeted 12 blocks
-    # you would pass the timestamp of the `current_block - 12` and 1 minute as timespan
+    # you would pass the timestamp of the `current_block - 12` and 60 seconds as wanted_timepan
     #
     # ```
-    # BTCPoW::Utils.retarget(timestamp: 1559306286, timespan: 1_u32) # => "2100c000"
+    # BTCPoW::Utils.retarget(
+    #   start_time: 1559306286_f64,
+    #   end_time: 1559306286_f64,
+    #   wanted_timespan: 60_f64,
+    #   current_target: BTCPoW::Utils.calculate_target("1e38ae39")
+    # ) # => "1e00b560"
     # ```
-    def retarget(timestamp : Int64, timespan : UInt32, current_target : BigInt = MIN_DIFFICULTY) : NBits
-      now = Time.utc_now.to_unix
-      passed_time = now - timestamp
+    def retarget(start_time : Float64,
+                 end_time : Float64,
+                 wanted_timespan : Float64,
+                 current_target : BigInt) : NBits
+      passed_time = end_time - start_time
 
-      new_num_target = current_target * (BigInt.new(passed_time) / BigInt.new(timespan))
-      calculate_nbits from: new_num_target
+      new_num_target = current_target * BigFloat.new(passed_time / wanted_timespan)
+      calculate_nbits from: BigInt.new(new_num_target)
     end
   end
 end
