@@ -8,6 +8,13 @@ targets:
   pow:
     main: src/btcpow.cr
 
+development_dependencies:
+  minitest:
+    github: ysbaddaden/minitest.cr
+  icr:
+    github: crystal-community/icr
+    branch: master
+
 crystal: 0.28.0
 
 license: MIT
