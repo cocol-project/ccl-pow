@@ -77,7 +77,7 @@ module BTCPoW
       if first_digit > 127
         h_target = "00#{h_target}"
       end
-      size = h_target.bytesize/2
+      size = (h_target.bytesize/2).to_i32
       "#{size.to_s(16)}#{h_target[0..5]}"
     end
 
