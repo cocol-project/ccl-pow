@@ -1,0 +1,2 @@
+- name: Crystal Ameba Linter
+  uses: crystal-ameba/github-action@v0.2.1
