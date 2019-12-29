@@ -1,10 +1,10 @@
-# BTCPoW
+# Cocol Proof of Work
 [![Build Status](https://travis-ci.org/cocol-project/btcpow.svg?branch=master)](https://travis-ci.org/cocol-project/btcpow)
 ---
 
 Bitcoin style Proof of Work lib written in Crystal
 
-Docs: https://cocol-project.github.io/btcpow
+Docs: https://cocol-project.github.io/ccl-pow
 
 ## Installation
 
@@ -13,7 +13,7 @@ Docs: https://cocol-project.github.io/btcpow
 ```yaml
 dependencies:
   btcpow:
-    github: cocol-project/btcpow
+    github: cocol-project/ccl-pow
 ```
 
 2. Run `shards install`
@@ -21,22 +21,22 @@ dependencies:
 ## Usage
 
 ```crystal
-require "btcpow"
+require "ccl-pow"
 ```
 
 #### Mining
 ```crystal
-BTCPoW.mine(difficulty: "1d00ffff", for: "my_block_data")
+CCL::Pow.mine(difficulty: "1d00ffff", for: "my_block_data")
 ```
 
 #### Calculate target based on difficulty bits
 ```crystal
-BTCPoW::Utils.calculate_target(from: "1d00ffff")
+CCL::Pow::Utils.calculate_target(from: "1d00ffff")
 ```
 
 ## Contributing
 
-1. Fork it (<https://github.com/cocol-project/btcpow/fork>)
+1. Fork it (<https://github.com/cocol-project/ccl-pow/fork>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
