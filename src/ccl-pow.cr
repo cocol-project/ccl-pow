@@ -4,7 +4,7 @@ require "openssl"
 # A Bitcoin style Proof of Work library for Crystal
 # Mostly inspired by @aantonop's proof of work example
 # https://github.com/bitcoinbook/bitcoinbook/blob/develop/code/proof-of-work-example.py
-module BTCPoW
+module CCL::Pow
   extend self
 
   alias InputData = String
@@ -17,7 +17,7 @@ module BTCPoW
   # Returns the nonce and the hash found for the given data input and difficulty
   #
   # ```
-  # BTCPoW.mine(difficulty: "1d00ffff", for: "my_blockchain_data")
+  # CCL::Pow.mine(difficulty: "1d00ffff", for: "my_blockchain_data")
   # ```
   def mine(difficulty nbits : String, for input_data : InputData) : Work
     target = Utils.calculate_target(from: nbits)
@@ -43,7 +43,7 @@ module BTCPoW
     # Returns the hash for `nonce` + `data`
     #
     # ```
-    # BTCPoW::Utils.calculate_hash(nonce: 20151213_u64, data: "cocol") # => "5906039dfa0262343155216f0d73135d30fd48a0d4543c61d27169db12736d3a"
+    # CCL::Pow::Utils.calculate_hash(nonce: 20151213_u64, data: "cocol") # => "5906039dfa0262343155216f0d73135d30fd48a0d4543c61d27169db12736d3a"
     # ```
     def calculate_hash(nonce : UInt64, data : String) : BlockHash
       sha = OpenSSL::Digest.new("SHA256")
@@ -57,7 +57,7 @@ module BTCPoW
     # https://github.com/bitcoinbook/bitcoinbook/blob/develop/ch10.asciidoc#target-representation
     #
     # ```
-    # BTCPoW::Utils.calculate_target(from: "1d00ffff") # => 26959535291011309493156476344723991336010898738574164086137773096960
+    # CCL::Pow::Utils.calculate_target(from: "1d00ffff") # => 26959535291011309493156476344723991336010898738574164086137773096960
     # ```
     def calculate_target(from nbits : String) : BigInt
       exponent = BigInt.new(nbits[0..1], 16)
@@ -69,7 +69,7 @@ module BTCPoW
     # Returns the target as nbits from a given numerical target
     #
     # ```
-    # BTCPoW::Utils.calculate_nbits(from: BigInt.new("26959535291011309493156476344723991336010898738574164086137773096960")) # => "1d00ffff"
+    # CCL::Pow::Utils.calculate_nbits(from: BigInt.new("26959535291011309493156476344723991336010898738574164086137773096960")) # => "1d00ffff"
     # ```
     def calculate_nbits(from target : BigInt) : NBits
       h_target = target.to_s(16)
@@ -88,11 +88,11 @@ module BTCPoW
     # you would pass the timestamp of the `current_block - 12` and 60 seconds as wanted_timepan
     #
     # ```
-    # BTCPoW::Utils.retarget(
+    # CCL::Pow::Utils.retarget(
     #   start_time: 1559306286_f64,
     #   end_time: 1559306286_f64,
     #   wanted_timespan: 60_f64,
-    #   current_target: BTCPoW::Utils.calculate_target("1e38ae39")
+    #   current_target: CCL::Pow::Utils.calculate_target("1e38ae39")
     # ) # => "1e00b560"
     # ```
     def retarget(start_time : Float64,

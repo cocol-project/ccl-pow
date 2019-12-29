@@ -1,2 +1,2 @@
 require "spec"
-require "../src/btcpow.cr"
+require "../src/ccl-pow.cr"
