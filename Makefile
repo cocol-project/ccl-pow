@@ -1,10 +1,7 @@
-.DEFAULT_GOAL := development
-
-development:
-	crystal build -Dpreview_mt src/cocol.cr --warnings all --progress
+.DEFAULT_GOAL := prepare
 
 
-prepare: format ameba test
+prepare: format ameba test docs
 
 format:
 	crystal tool format
@@ -14,3 +11,6 @@ ameba:
 
 test:
 	crystal spec --error-trace -t -Dpreview_mt
+	
+docs:
+	crystal docs
