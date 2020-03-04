@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 0.27.2">
+<meta name="generator" content="Crystal Docs 0.32.1">
 
-
-<link href="css/style.css" rel="stylesheet" type="text/css">
-
+<link href="css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/doc.js"></script>
-<script type="text/javascript">
-  CrystalDoc.base_path = "";
-</script>
 
-  <meta id="repository-name" content="">
-  <title>README - </title>
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+
+  <meta id="repository-name" content="github.com/cocol-project/ccl-pow">
+  <title>README - github.com/cocol-project/ccl-pow</title>
+  <script type="text/javascript">
+  CrystalDoc.base_path = "";
+  </script>
 </head>
 <body>
 
@@ -36,28 +40,48 @@
   <div class="types-list">
     <ul>
   
-  <li class="parent " data-id="/BTCPoW" data-name="btcpow">
-      <a href="BTCPoW.html">BTCPoW</a>
+  <li class="parent " data-id="github.com/cocol-project/ccl-pow/CCL" data-name="ccl">
+      <a href="CCL.html">CCL</a>
       
         <ul>
   
-  <li class=" " data-id="/BTCPoW/BlockHash" data-name="btcpow::blockhash">
-      <a href="BTCPoW/BlockHash.html">BlockHash</a>
+  <li class="parent " data-id="github.com/cocol-project/ccl-pow/CCL/Pow" data-name="ccl::pow">
+      <a href="CCL/Pow.html">Pow</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/cocol-project/ccl-pow/CCL/Pow/BlockHash" data-name="ccl::pow::blockhash">
+      <a href="CCL/Pow/BlockHash.html">BlockHash</a>
       
     </li>
   
-  <li class=" " data-id="/BTCPoW/InputData" data-name="btcpow::inputdata">
-      <a href="BTCPoW/InputData.html">InputData</a>
+  <li class=" " data-id="github.com/cocol-project/ccl-pow/CCL/Pow/InputData" data-name="ccl::pow::inputdata">
+      <a href="CCL/Pow/InputData.html">InputData</a>
       
     </li>
   
-  <li class=" " data-id="/BTCPoW/Utils" data-name="btcpow::utils">
-      <a href="BTCPoW/Utils.html">Utils</a>
+  <li class="parent " data-id="github.com/cocol-project/ccl-pow/CCL/Pow/Utils" data-name="ccl::pow::utils">
+      <a href="CCL/Pow/Utils.html">Utils</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/cocol-project/ccl-pow/CCL/Pow/Utils/NBits" data-name="ccl::pow::utils::nbits">
+      <a href="CCL/Pow/Utils/NBits.html">NBits</a>
       
     </li>
   
-  <li class=" " data-id="/BTCPoW/Work" data-name="btcpow::work">
-      <a href="BTCPoW/Work.html">Work</a>
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/cocol-project/ccl-pow/CCL/Pow/Work" data-name="ccl::pow::work">
+      <a href="CCL/Pow/Work.html">Work</a>
+      
+    </li>
+  
+</ul>
+
       
     </li>
   
@@ -73,41 +97,73 @@
 
 
 <div class="main-content">
-<h1>BTCPoW</h1>
+<h1><a id="cocol-proof-of-work" class="anchor" href="#cocol-proof-of-work">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Cocol Proof of Work</h1>
+
+<h2><a id="weeklyhttpsgithub.comcocol-projectccl-powworkflowsweeklybadge.svg" class="anchor" href="#weeklyhttpsgithub.comcocol-projectccl-powworkflowsweeklybadge.svg">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a><img src="https://github.com/cocol-project/ccl-pow/workflows/weekly/badge.svg" alt="weekly"/></h2>
 
 <p>Bitcoin style Proof of Work lib written in Crystal</p>
 
-<h2>Installation</h2>
+<p>Docs: https://cocol-project.github.io/ccl-pow</p>
+
+<h2><a id="installation" class="anchor" href="#installation">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Installation</h2>
 
 <ol><li>Add the dependency to your <code>shard.yml</code>:</li></ol>
 
-<p><code></code>`yaml
-   dependencies:</p>
-
-<pre><code> btcpow:
-   github: cocol<span class="o">-</span>project<span class="s">/btcpow</code></pre>
-
-<p><code></code>`</p>
+<pre><code class="language-yaml">dependencies:
+  btcpow:
+    github: cocol-project/ccl-pow</code></pre>
 
 <ol><li>Run <code>shards install</code></li></ol>
 
-<h2>Usage</h2>
+<h2><a id="usage" class="anchor" href="#usage">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Usage</h2>
 
-<pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;btcpow&quot;</span></code></pre>
+<pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;ccl-pow&quot;</span></code></pre>
 
-<h4>Mining</h4>
+<h4><a id="mining" class="anchor" href="#mining">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Mining</h4>
 
-<pre><code><span class="t">BTCPoW</span>.mine(difficulty: <span class="s">&quot;1d00ffff&quot;</span>, <span class="k">for</span>: <span class="s">&quot;my_block_data&quot;</span>)</code></pre>
+<pre><code class="language-crystal"><span class="t">CCL</span><span class="t">::</span><span class="t">Pow</span>.mine(difficulty: <span class="s">&quot;1d00ffff&quot;</span>, <span class="k">for</span>: <span class="s">&quot;my_block_data&quot;</span>)</code></pre>
 
-<h4>Calculate target based on difficulty bits</h4>
+<h4><a id="calculate-target-based-on-difficulty-bits" class="anchor" href="#calculate-target-based-on-difficulty-bits">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Calculate target based on difficulty bits</h4>
 
-<pre><code><span class="t">BTCPoW</span><span class="t">::</span><span class="t">Utils</span>.calculate_target(from: <span class="s">&quot;1d00ffff&quot;</span>)</code></pre>
+<pre><code class="language-crystal"><span class="t">CCL</span><span class="t">::</span><span class="t">Pow</span><span class="t">::</span><span class="t">Utils</span>.calculate_target(from: <span class="s">&quot;1d00ffff&quot;</span>)</code></pre>
 
-<h2>Contributing</h2>
+<h2><a id="contributing" class="anchor" href="#contributing">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Contributing</h2>
 
-<ol><li>Fork it (&lt;https://github.com/cocol-project/btcpow/fork>)</li><li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li><li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li><li>Push to the branch (<code>git push origin my-new-feature</code>)</li><li>Create a new Pull Request</li></ol>
+<ol><li>Fork it (&lt;https://github.com/cocol-project/ccl-pow/fork>)</li><li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li><li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li><li>Push to the branch (<code>git push origin my-new-feature</code>)</li><li>Create a new Pull Request</li></ol>
 
-<h2>Contributors</h2>
+<h2><a id="contributors" class="anchor" href="#contributors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Contributors</h2>
 
 <ul><li><a href="https://github.com/cserb" target="_blank">Cristian Șerb</a> - creator and maintainer</li></ul>
 </div>
