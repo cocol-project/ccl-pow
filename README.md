@@ -1,5 +1,5 @@
 # Cocol Proof of Work
-[![Build Status](https://travis-ci.org/cocol-project/btcpow.svg?branch=master)](https://travis-ci.org/cocol-project/btcpow)
+![weekly](https://github.com/cocol-project/ccl-pow/workflows/weekly/badge.svg)
 ---
 
 Bitcoin style Proof of Work lib written in Crystal
