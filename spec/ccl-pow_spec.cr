@@ -2,9 +2,9 @@ require "./spec_helper"
 
 describe CCL::Pow do
   it "mines correctly" do
-    cocol = CCL::Pow.mine(difficulty: "20100000", for: "cocol")
+    cocol = CCL::Pow.mine(difficulty: CCL::Pow::Utils::MIN_NBITS, for: "cocol")
     cocol.nonce.should be > 1
-    BigInt.new(cocol.hash, 16).should be < BigInt.new("1000000000000000000000000000000000000000000000000000000000000000", 16)
+    BigInt.new(cocol.hash, 16).should be < CCL::Pow::Utils::MIN_TARGET
   end
 end
 
@@ -21,40 +21,44 @@ describe CCL::Pow::Utils do
     target.should eq(BigInt.new("26959535291011309493156476344723991336010898738574164086137773096960", 10))
   end
 
-  # Testing for obvious bugs
-  it "finds new target" do
-    new_target = CCL::Pow::Utils.retarget(
-      start_time: (Time.utc.to_unix - 12).to_f64, # we test for 12 seconds
-      end_time: Time.utc.to_unix.to_f64,
-      wanted_timespan: 60_f64, # we actually want it to take 1 minute
-      current_target: CCL::Pow::Utils.calculate_target("1e38ae39")
-    )
-    new_target.should eq("1e00b560")
-  end
-
   it "calculates nbits from target" do
     nbits = CCL::Pow::Utils.calculate_nbits(from: BigInt.new("26959535291011309493156476344723991336010898738574164086137773096960"))
     nbits.should eq("1d00ffff")
   end
 
-  # it "retargets" do
-  #   diff = "1e38ae39"
-  #   start_time = Time.now
-  #   pp "-- Start: #{start_time}"
-  #   (1..30).each do |i|
-  #     block = CCL::Pow.mine(difficulty: diff, for: "TestMe#{Time.now}#{Random::Secure.hex}")
-  #     pp "#{i} #{block.hash} #{block.nonce}"
-  #     # sleep 0.3
-  #   end
-  #   end_time = Time.now
-  #   pp "-- End: #{end_time}"
+  context "retarget" do
+    it "finds new target" do
+      new_target_nbits = CCL::Pow::Utils.retarget(
+        # we test for 1 second less then wanted timespan
+        start_time: (Time.utc.to_unix - 59).to_f64,
+        end_time: Time.utc.to_unix.to_f64,
+        wanted_timespan: 60_f64,
+        current_target: CCL::Pow::Utils::MIN_TARGET
+      )
+      new_target = CCL::Pow::Utils.calculate_target(new_target_nbits)
+      new_target.should be < CCL::Pow::Utils::MIN_TARGET
+    end
 
-  #   retarget = CCL::Pow::Utils.retarget(
-  #     start_time: start_time.to_unix,
-  #     end_time: end_time.to_unix,
-  #     wanted_timespan: 30_u32,
-  #     current_target: CCL::Pow::Utils.calculate_target(diff)
-  #   )
-  #   pp "---- RETARGET: #{retarget}"
-  # end
+    it "finds new target" do
+      new_target_nbits = CCL::Pow::Utils.retarget(
+        # we test for 1 second more then timespan
+        start_time: (Time.utc.to_unix - 61).to_f64,
+        end_time: Time.utc.to_unix.to_f64,
+        wanted_timespan: 60_f64,
+        current_target: CCL::Pow::Utils::MIN_TARGET
+      )
+      new_target_nbits.should eq CCL::Pow::Utils::MIN_NBITS
+    end
+
+    it "returns min nbits when start & end equal" do
+      time = Time.utc.to_unix.to_f64
+      new_target = CCL::Pow::Utils.retarget(
+        start_time: time,
+        end_time: time,
+        wanted_timespan: 60_f64,
+        current_target: CCL::Pow::Utils.calculate_target("1e38ae39")
+      )
+      new_target.should eq(CCL::Pow::Utils::MIN_NBITS)
+    end
+  end
 end

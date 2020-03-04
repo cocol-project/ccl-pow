@@ -98,10 +98,14 @@ module CCL::Pow
     def retarget(start_time : Float64,
                  end_time : Float64,
                  wanted_timespan : Float64,
-                 current_target : BigInt) : NBits
-      passed_time = end_time - start_time
+                 current_target : BigInt,
+                 min_target = MIN_TARGET) : NBits
+      return calculate_nbits(min_target) if start_time >= end_time
 
+      passed_time = end_time - start_time
       new_num_target = current_target * BigFloat.new(passed_time / wanted_timespan)
+      return calculate_nbits(min_target) if new_num_target > min_target
+
       calculate_nbits from: BigInt.new(new_num_target)
     end
   end
